@@ -1,0 +1,11 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About Us",
+    "contact": "Contact Us",
+    "start": "Start Learning"
+  },
+  "home": {
+    "welcome": "Welcome to our English learning website!"
+  }
+}
