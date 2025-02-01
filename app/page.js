@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Loading from "./components/Loading";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 import { NextSeo } from "next-seo";
 
 // استفاده از dynamic با ssr: false
@@ -38,6 +39,7 @@ export default function Home() {
       <Skills />
       <Blog />
       <Contact />
+      <ScrollToTopButton/>
     </>
   );
 }

@@ -33,7 +33,9 @@ const Portfolio = () => {
   const filteredProjects =
     selectedCategory === "All"
       ? projects
-      : projects.filter((project) => project.category === selectedCategory);
+      : projects.filter((project) =>
+          project.categories.includes(selectedCategory)
+        );
 
   return (
     <section
@@ -42,30 +44,41 @@ const Portfolio = () => {
     >
       {/* عنوان با افکت */}
       <motion.h2
-        className="text-5xl font-extrabold text-center text-white mb-12 relative 
-        before:content-[''] before:absolute before:bottom-[-10px] before:left-1/2 
-        before:w-24 before:h-1 before:bg-blue-500 before:transition-transform before:origin-center"
+        className="text-4xl md:text-5xl font-extrabold text-center text-white mb-12 relative"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
         Portfolio
+        <span className="block w-16 h-1 bg-blue-500 mx-auto mt-4"></span>
       </motion.h2>
 
       {/* فیلتر دسته‌بندی */}
       <div className="flex justify-center space-x-4 mb-8">
         {categories.map((category) => (
           <button
-            key={category}
-            onClick={() => setSelectedCategory(category)}
+            key={category.name}
+            onClick={() => setSelectedCategory(category.name)}
             className={`px-6 py-2 rounded-lg text-lg font-semibold transition-all ${
-              selectedCategory === category
-                ? "bg-blue-500 text-white"
-                : "bg-gray-700 text-gray-300 hover:bg-blue-500 hover:text-white"
+              selectedCategory === category.name
+                ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white"
+                : "bg-gray-700 text-gray-300 hover:bg-gradient-to-r from-blue-500 to-purple-600 hover:text-white"
             }`}
           >
-            {category}
+            {/* Category Icon */}
+            {category.name === "All" ? (
+              <></>
+            ) : (
+              <Image
+                src={category.icon}
+                alt={category.name}
+                width={20}
+                height={20}
+                className="inline-block mr-2"
+              />
+            )}
+            {category.name}
           </button>
         ))}
       </div>
@@ -116,7 +129,7 @@ const Portfolio = () => {
                   <p className="text-gray-400">{project.description}</p>
                 </div>
 
-                <div className="absolute inset-x-0 bottom-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-blue-500 to-green-500 text-white text-center py-3">
+                <div className="absolute inset-x-0 bottom-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-center py-3">
                   <a
                     href={project.link}
                     target="_blank"

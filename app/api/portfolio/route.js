@@ -6,24 +6,31 @@ export async function GET() {
       projects: [
         {
           id: 1,
-          title: "Modern Web App",
-          description: "A full-stack Next.js application with Tailwind CSS.",
-          category: "Web",
-          image: "https://uploadkon.ir/uploads/febb01_25download.png",
-          link: "https://uploadkon.ir/uploads/febb01_25download.png",
+          title: "Lenela Panel",
+          description: "A Panel Admin for Lenela Application",
+          categories: ["Web", "React"], // Multiple categories
+          image:
+            "https://uploadkon.ir/uploads/d3ad01_25photo-2025-02-01-21-04-57.jpg",
+          link: "https://uploadkon.ir/uploads/d3ad01_25photo-2025-02-01-21-04-57.jpg",
         },
         {
           id: 2,
           title: "E-Commerce Platform",
           description:
             "A fast and secure e-commerce platform with React & Node.js.",
-          category: "Web",
+          categories: ["Web", "NextJs"], // Multiple categories
           image: "https://uploadkon.ir/uploads/f01201_25download-2-.jpg",
           link: "https://uploadkon.ir/uploads/f01201_25download-2-.jpg",
         },
         // More projects...
       ],
-      categories: ["All", "Web", "Mobile", "Design"],
+      categories: [
+        { name: "All", icon: "" },
+        { name: "Web", icon: "https://uploadkon.ir/uploads/76eb01_25vitejsdev-icon.svg" },
+        { name: "React", icon: "https://uploadkon.ir/uploads/409f01_25reactjs-icon.svg" },
+        { name: "NextJs", icon: "https://uploadkon.ir/uploads/f43d01_25nextjs-icon.svg" },
+        // Add more categories with icons
+      ],
     }),
     {
       headers: { "Content-Type": "application/json" },
