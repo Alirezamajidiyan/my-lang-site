@@ -5,6 +5,7 @@
 /* اسکرول نرم */
 html {
   scroll-behavior: smooth;
+  background-color: #111827;
 }
 
 /* اسکرول بار برای Chrome و Safari */
@@ -13,14 +14,14 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* رنگ پس‌زمینه ترک اسکرول بار */
+  background: #111827; /* رنگ پس‌زمینه ترک اسکرول بار */
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #1a72bb; /* رنگ thumb اسکرول بار */
   border-radius: 10px;
-  border: 3px solid #f1f1f1; /* حاشیه اطراف thumb */
+  border: 3px solid #111827; /* حاشیه اطراف thumb */
 }
 
 ::-webkit-scrollbar-thumb:hover {

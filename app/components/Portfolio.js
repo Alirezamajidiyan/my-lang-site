@@ -1,26 +1,108 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 
+// Portfolio Component
 const Portfolio = () => {
+  const [projects, setProjects] = useState([]); // پروژه‌ها
+  const [categories, setCategories] = useState([]); // دسته‌بندی‌ها
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  // بارگذاری پروژه‌ها و دسته‌بندی‌ها از API
+  useEffect(() => {
+    const fetchPortfolioData = async () => {
+      try {
+        const response = await fetch("/api/portfolio"); // مسیر API خود را وارد کنید
+        const data = await response.json();
+        setProjects(data.projects); // داده‌های پروژه‌ها
+        setCategories(data.categories); // داده‌های دسته‌بندی‌ها
+      } catch (error) {
+        console.error("Error fetching portfolio data:", error);
+      }
+    };
+
+    fetchPortfolioData();
+  }, []);
+
+  // فیلتر کردن پروژه‌ها بر اساس دسته‌بندی
+  const filteredProjects =
+    selectedCategory === "All"
+      ? projects
+      : projects.filter((project) => project.category === selectedCategory);
+
   return (
-    <section id="portfolio" className="py-20 container mx-auto">
+    <section
+      id="portfolio"
+      className="py-20 container mx-auto px-6 bg-gray-900"
+    >
+      {/* عنوان با افکت */}
       <motion.h2
-        className="text-3xl font-bold text-center mb-6"
+        className="text-5xl font-extrabold text-center text-white mb-12 relative 
+        before:content-[''] before:absolute before:bottom-[-10px] before:left-1/2 
+        before:w-24 before:h-1 before:bg-blue-500 before:transition-transform before:origin-center"
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
       >
         Portfolio
       </motion.h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Example Projects */}
-        <motion.div
-          className="p-4 border rounded-lg"
-          whileHover={{ scale: 1.05 }}
-        >
-          <h3 className="text-xl font-semibold">Project 1</h3>
-          <p>Short description of project.</p>
-        </motion.div>
+
+      {/* فیلتر دسته‌بندی */}
+      <div className="flex justify-center space-x-4 mb-8">
+        {categories.map((category) => (
+          <button
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            className={`px-6 py-2 rounded-lg text-lg font-semibold transition-all ${
+              selectedCategory === category
+                ? "bg-blue-500 text-white"
+                : "bg-gray-700 text-gray-300 hover:bg-blue-500 hover:text-white"
+            }`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
+      {/* نمایش پروژه‌ها */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {filteredProjects.map((project) => (
+          <motion.div
+            key={project.id}
+            className="relative bg-gray-800 rounded-xl overflow-hidden shadow-lg group"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* تصویر پروژه */}
+            <div className="relative">
+              <Image
+                src={project.image}
+                alt={project.title}
+                width={400}
+                height={300}
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              {/* افکت نئونی روی عکس */}
+              <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-opacity"></div>
+            </div>
+
+            {/* جزئیات پروژه */}
+            <div className="p-6 text-center">
+              <h3 className="text-2xl font-semibold text-white mb-2">
+                {project.title}
+              </h3>
+              <p className="text-gray-400">{project.description}</p>
+            </div>
+
+            <div className="absolute inset-x-0 bottom-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-blue-500 to-green-500 text-white text-center py-3">
+              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                View Project
+              </a>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
