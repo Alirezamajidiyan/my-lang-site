@@ -2,6 +2,8 @@
 import { motion } from "framer-motion";
 
 const About = () => {
+  console.log("Rendering About Section...");
+
   return (
     <section id="about" className="py-20 container mx-auto">
       <motion.h2

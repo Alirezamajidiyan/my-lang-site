@@ -1,12 +1,11 @@
 const SEO = {
   title: "My Personal Website",
-  description: "Showcasing my work, skills, and blog.",
+  description: "Welcome to my personal website built with Next.js",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.mywebsite.com/",
-    title: "My Personal Website",
-    description: "Showcasing my work, skills, and blog.",
+    url: "https://mywebsite.com",
+    site_name: "My Personal Website",
   },
 };
 
