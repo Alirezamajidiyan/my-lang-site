@@ -7,13 +7,13 @@ export default function ErrorPage() {
 
   useEffect(() => {
     // اینجا می‌توانید کدهای مربوط به خطا را که می‌خواهید نمایش دهید بنویسید.
-    setErrorMessage("متاسفانه مشکلی پیش آمده است. لطفاً دوباره تلاش کنید.");
+    setErrorMessage("a error in develope mode");
   }, []);
 
   return (
     <div className="flex items-center justify-center h-screen bg-red-100">
       <div className="text-center">
-        <h1 className="text-4xl font-bold text-red-500">خطا!</h1>
+        <h1 className="text-4xl font-bold text-red-500">Error</h1>
         <p className="text-lg text-gray-700">{errorMessage}</p>
       </div>
     </div>

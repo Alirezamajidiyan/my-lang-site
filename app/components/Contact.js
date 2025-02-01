@@ -22,15 +22,31 @@ const ContactMe = () => {
     });
   };
 
+  // Form validation
+  const validateForm = () => {
+    if (!formData.name || !formData.email || !formData.message) {
+      setError("All fields are required.");
+      return false;
+    }
+
+    // Check if the email is valid
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(formData.email)) {
+      setError("Please enter a valid email address.");
+      return false;
+    }
+
+    return true;
+  };
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(""); // Clear error before submitting
 
-    // Check if all fields are filled
-    if (!formData.name || !formData.email || !formData.message) {
-      setError("Please fill out all fields.");
+    // Validate the form before sending
+    if (!validateForm()) {
       setLoading(false);
       return;
     }

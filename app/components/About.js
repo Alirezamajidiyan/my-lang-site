@@ -17,6 +17,8 @@ const About = () => {
       try {
         const res = await fetch("/api/about"); // درخواست به API
         const result = await res.json();
+        console.log(result);
+
         setData(result);
       } catch (error) {
         console.error("Error fetching data: ", error);
@@ -127,11 +129,10 @@ const About = () => {
             )}
           </p>
           <a
-            href="https://uploadkon.ir/uploads/612b01_25علیرضا-مجیدیان-1403-5-4.pdf"
+            href="https://uploadkon.ir/uploads/edad01_25علیرضا-مجیدیان-1403-11-13.pdf"
             download
             className="relative inline-block px-8 py-3 font-bold text-white bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl shadow-lg overflow-hidden transition-all duration-500 transform hover:scale-110 hover:shadow-2xl"
           >
-            
             <span className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-50 blur-lg"></span>
             <span className="relative z-10">Download CV</span>
           </a>

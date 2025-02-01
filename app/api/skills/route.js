@@ -1,36 +1,28 @@
-// app/api/skills/route.js
+import { supabase } from "@/lib/supabaseClient";
 
 export async function GET() {
-  return new Response(
-    JSON.stringify({
-      skills: [
-        {
-          id: 1,
-          name: "Node.js",
-          icon: "https://uploadkon.ir/uploads/8a3601_25nodejs-icon.svg", // مسیر آیکون
-          progress: 80,
-          description:
-            "A JavaScript runtime built on Chrome's V8 JavaScript engine.",
-        },
-        {
-          id: 2,
-          name: "Next.js",
-          icon: "https://uploadkon.ir/uploads/f43d01_25nextjs-icon.svg",
-          progress: 75,
-          description:
-            "A React framework for building server-side rendered apps and static websites.",
-        },
-        {
-          id: 3,
-          name: "React.js",
-          icon: "https://uploadkon.ir/uploads/409f01_25reactjs-icon.svg",
-          progress: 70,
-          description: "A JavaScript library for building user interfaces.",
-        },
-      ],
-    }),
-    {
-      headers: { "Content-Type": "application/json" },
+  try {
+    const { data, error } = await supabase.from("skills").select("*");
+
+    if (error) {
+      return new Response(JSON.stringify({ error: error.message }), {
+        status: 500,
+      });
     }
-  );
+
+    if (!data || data.length === 0) {
+      return new Response(JSON.stringify({ message: "No data found in skills table" }), {
+        status: 404,
+      });
+    }
+
+    return new Response(JSON.stringify({ skills: data }), {
+      headers: { "Content-Type": "application/json" },
+      status: 200,
+    });
+  } catch (err) {
+    return new Response(JSON.stringify({ error: err.message }), {
+      status: 500,
+    });
+  }
 }

@@ -1,27 +1,38 @@
-// /app/api/about/route.js
+import { supabase } from "@/lib/supabaseClient";
 
 export async function GET(req) {
-  // داده‌های پروفایل که می‌خواهید برگردانید
-  const profileData = {
-    name: "Alireza Majidian", // اسم
-    description:
-      "A passionate web developer specializing in Next.js, React, and Tailwind CSS.",
-    skills: {
-      nextJs: "Next.js",
-      tailwind: "Tailwind CSS",
-      MernStack: "Mern Stack",
-      react: "React",
-    },
-    socialLinks: {
-      github: "https://github.com/yourusername",
-      linkedin: "https://www.linkedin.com/in/yourusername",
-      twitter: "https://twitter.com/yourusername",
-    },
-  };
+  try {
+    // دریافت داده‌های پروفایل از جدول profiles
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("*")
+    console.log(data);
+    
+    if (error){
+      throw error
+      console.log(error);
+      
+    };
 
-  return new Response(JSON.stringify(profileData), {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+    // فرمت‌دهی داده‌ها به شکلی که مد نظر است
+    const profileData = {
+      name: data.name,
+      profilePhoto: data.profilephoto,
+      description: data.description,
+      skills: data.skills || {},
+      socialLinks: data.sociallinks || {},
+    };
+
+    return new Response(JSON.stringify(profileData), {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (err) {
+    console.log(err);
+    
+    return new Response(JSON.stringify({ error: err.message }), {
+      status: 500,
+    });
+  }
 }

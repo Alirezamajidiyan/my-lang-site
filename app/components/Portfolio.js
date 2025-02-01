@@ -17,8 +17,10 @@ const Portfolio = () => {
       try {
         const response = await fetch("/api/portfolio"); // مسیر API خود را وارد کنید
         const data = await response.json();
+
         setProjects(data.projects); // داده‌های پروژه‌ها
         setCategories(data.categories); // داده‌های دسته‌بندی‌ها
+
         setLoading(false); // پس از بارگذاری، لودینگ را به false تغییر می‌دهیم
       } catch (error) {
         console.error("Error fetching portfolio data:", error);
