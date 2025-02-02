@@ -18,7 +18,7 @@ export const metadata = {
     description:
       "Explore my portfolio showcasing MERN Stack projects, Next.js applications, and advanced web development skills.",
     images: ["https://yourwebsite.com/og-image.jpg"],
-    url: "https://yourwebsite.com",
+    url: "https://alirezamajidian.vercel.app/",
     siteName: "Alireza Majidian Portfolio",
   },
   twitter: {
@@ -34,8 +34,10 @@ export const metadata = {
     shortcut: "/favicon.ico",
     // apple: "/apple-touch-icon.png",
   },
+  other: {
+    "google-site-verification": "UsefY2aOqcC6dWs1j-A4-BwzBABZUMo2eq0YFK2xtjo",
+  },
 };
-
 import Header from "./components/Header";
 import SmoothScroll from "./components/SmoothScroll";
 import "./globals.css";
