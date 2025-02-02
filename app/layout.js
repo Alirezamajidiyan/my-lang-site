@@ -27,7 +27,12 @@ export const metadata = {
     description:
       "Passionate Fullstack Developer with expertise in MongoDB, Express, React, and Node.js. Check out my latest projects!",
     images: ["https://yourwebsite.com/twitter-og-image.jpg"],
-    creator: "@yourTwitterHandle", // (اگر دارید، اضافه کنید)
+    creator: "@yourTwitterHandle", // اگر دارید، اضافه کنید
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    // apple: "/apple-touch-icon.png",
   },
 };
 
