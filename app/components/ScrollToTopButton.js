@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { FaArrowCircleUp } from "react-icons/fa";
 
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,7 +33,7 @@ const ScrollToTopButton = () => {
   return (
     <motion.button
       onClick={scrollToTop}
-      className={`fixed bottom-6 right-6 bg-blue-500 text-white p-4 rounded-full shadow-lg z-50 transform transition-all ${
+      className={`fixed bottom-6 right-6 bg-gradient-to-r from-blue-400 to-purple-500 text-white p-4 rounded-full shadow-lg z-50 transform transition-all ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
       initial={{ opacity: 0 }}
@@ -40,7 +41,7 @@ const ScrollToTopButton = () => {
       transition={{ duration: 0.3 }}
       aria-label="Scroll to top"
     >
-      ↑
+      <FaArrowCircleUp/>
     </motion.button>
   );
 };

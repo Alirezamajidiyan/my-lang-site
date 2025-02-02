@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Alireza Majidian | Web Developer</title>
+        <title>Alireza Majidian</title>
         <meta
           name="description"
           content="Personal website of Alireza Majidian, a passionate web developer specializing in Next.js, React, and Tailwind CSS."

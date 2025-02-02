@@ -1,4 +1,36 @@
-import Head from "next/head";
+export const metadata = {
+  title: "Alireza Majidian | Fullstack MERN Developer",
+  description:
+    "Experienced Fullstack Developer specializing in MERN Stack (MongoDB, Express, React, Node.js), Next.js, and scalable web applications.",
+  keywords: [
+    "Fullstack Developer",
+    "MERN Stack",
+    "Next.js Developer",
+    "React Developer",
+    "Node.js",
+    "JavaScript",
+    "Web Development",
+  ].join(", "),
+  robots: "index, follow",
+  openGraph: {
+    type: "website",
+    title: "Alireza Majidian | Fullstack MERN Developer",
+    description:
+      "Explore my portfolio showcasing MERN Stack projects, Next.js applications, and advanced web development skills.",
+    images: ["https://yourwebsite.com/og-image.jpg"],
+    url: "https://yourwebsite.com",
+    siteName: "Alireza Majidian Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Alireza Majidian | Fullstack MERN Developer",
+    description:
+      "Passionate Fullstack Developer with expertise in MongoDB, Express, React, and Node.js. Check out my latest projects!",
+    images: ["https://yourwebsite.com/twitter-og-image.jpg"],
+    creator: "@yourTwitterHandle", // (اگر دارید، اضافه کنید)
+  },
+};
+
 import Header from "./components/Header";
 import SmoothScroll from "./components/SmoothScroll";
 import "./globals.css";
@@ -7,40 +39,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Head>
-          <meta
-            name="description"
-            content="A passionate web developer specializing in Next.js, React, and Tailwind CSS."
-          />
-          <meta name="robots" content="index, follow" />
-          <meta property="og:type" content="website" />
-          <meta
-            property="og:title"
-            content="Alireza Majidian | Web Developer"
-          />
-          <meta
-            property="og:description"
-            content="Personal website of Alireza Majidian, a passionate web developer."
-          />
-          <meta
-            property="og:image"
-            content="https://yourwebsite.com/og-image.jpg"
-          />
-          <meta property="og:url" content="https://yourwebsite.com" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta
-            name="twitter:title"
-            content="Alireza Majidian | Web Developer"
-          />
-          <meta
-            name="twitter:description"
-            content="Personal website of Alireza Majidian"
-          />
-          <meta
-            name="twitter:image"
-            content="https://yourwebsite.com/twitter-og-image.jpg"
-          />
-        </Head>
         <Header />
         <SmoothScroll>{children}</SmoothScroll>
       </body>

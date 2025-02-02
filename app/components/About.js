@@ -79,10 +79,10 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <a href="https://github.com/yourusername" target="_blank">
+            <a href="https://github.com/Alirezamajidiyan" target="_blank">
               <FaGithub className="text-3xl text-gray-300 hover:text-white transition-colors" />
             </a>
-            <a href="https://www.linkedin.com/in/yourusername" target="_blank">
+            <a href="https://www.instagram.com/alireza_majidiyan1/" target="_blank">
               <Image src={Insta} width={30} />
             </a>
             <a href="https://twitter.com/yourusername" target="_blank">
