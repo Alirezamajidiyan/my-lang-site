@@ -50,9 +50,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <meta name="referrer" content="no-referrer-when-downgrade" />
         {/* Google Analytics Script */}
         <Script
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
         />
         <Script
