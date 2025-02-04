@@ -91,7 +91,7 @@ export default function RootLayout({ children }) {
               name: "Alireza Majidian",
               url: "https://alirezamajidian.vercel.app/",
               sameAs: [
-                "https://twitter.com/alireza-majidian", // لینک به پروفایل توییتر شما
+                "https://twitter.com/alirezamajidian", // لینک به پروفایل توییتر شما
                 "https://github.com/Alirezamajidiyan", // لینک به پروفایل گیت‌هاب شما
                 "https://www.instagram.com/alireza_majidiyan1", // لینک به پروفایل اینستاگرام شما
               ],
