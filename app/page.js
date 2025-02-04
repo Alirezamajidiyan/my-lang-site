@@ -9,7 +9,7 @@ const Header = dynamic(() => import("./components/Header"), {
   loading: () => <Loading />,
 });
 const About = dynamic(() => import("./components/About"), {
-  ssr: false,
+  ssr:true,
   loading: () => <Loading />,
 });
 const Portfolio = dynamic(() => import("./components/Portfolio"), {

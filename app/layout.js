@@ -44,7 +44,6 @@ export const metadata = {
   },
 };
 
-// Google Analytics Measurement ID
 const GA_TRACKING_ID = "G-54VELCWS0L";
 
 export default function RootLayout({ children }) {
@@ -70,6 +69,16 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
+        {/* Google Analytics noscript for non-JS browsers */}
+        <noscript>
+          <img
+            src={`https://www.googletagmanager.com/ns.html?id=${GA_TRACKING_ID}`}
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            alt=""
+          />
+        </noscript>
       </head>
       <body>
         <GoogleAnalytics />
