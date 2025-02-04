@@ -14,7 +14,6 @@ const Skills = () => {
         const response = await fetch("/api/skills");
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
           
           setSkills(data.skills);
           setIsLoading(false); // پس از دریافت داده‌ها، وضعیت بارگذاری را غیرفعال می‌کنیم
