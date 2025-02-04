@@ -1,3 +1,9 @@
+import Script from "next/script";
+import Header from "./components/Header";
+import SmoothScroll from "./components/SmoothScroll";
+import "./globals.css";
+import GoogleAnalytics from "./components/GoogleAnalytics";
+
 export const metadata = {
   title: "Alireza Majidian | Fullstack MERN Developer",
   description:
@@ -27,26 +33,46 @@ export const metadata = {
     description:
       "Passionate Fullstack Developer with expertise in MongoDB, Express, React, and Node.js. Check out my latest projects!",
     images: ["https://yourwebsite.com/twitter-og-image.jpg"],
-    creator: "@yourTwitterHandle", // اگر دارید، اضافه کنید
+    creator: "@yourTwitterHandle",
   },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    // apple: "/apple-touch-icon.png",
   },
   other: {
     "google-site-verification": "UsefY2aOqcC6dWs1j-A4-BwzBABZUMo2eq0YFK2xtjo",
   },
 };
-import Header from "./components/Header";
-import SmoothScroll from "./components/SmoothScroll";
-import "./globals.css";
+
+// Google Analytics Measurement ID
+const GA_TRACKING_ID = "G-54VELCWS0L";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* Google Analytics Script */}
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_TRACKING_ID}', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
+      </head>
       <body>
-        {/* <Header /> */}
+        <GoogleAnalytics />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

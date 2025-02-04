@@ -22,8 +22,6 @@ const Header = () => {
             {menuOpen ? <MdClose /> : <MdMenu />}
           </button>
         </div>
-
-        {/* منوی نوار ناوبری (مخصوص دسکتاپ) */}
         <div className="hidden lg:flex space-x-6">
           {["about", "portfolio", "skills", "contact"].map((item) => (
             <Link
