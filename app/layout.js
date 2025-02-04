@@ -80,6 +80,30 @@ export default function RootLayout({ children }) {
             alt=""
           />
         </noscript>
+
+        {/* JSON-LD Schema Markup */}
+        <Script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Alireza Majidian",
+              url: "https://alirezamajidian.vercel.app/",
+              sameAs: [
+                "https://twitter.com/alireza-majidian", // لینک به پروفایل توییتر شما
+                "https://github.com/Alirezamajidiyan", // لینک به پروفایل گیت‌هاب شما
+                "https://www.instagram.com/alireza_majidiyan1", // لینک به پروفایل اینستاگرام شما
+              ],
+              jobTitle: "Fullstack Developer",
+              worksFor: {
+                "@type": "Organization",
+                name: "Freelancer",
+              },
+              mainEntityOfPage: "https://alirezamajidian.vercel.app/",
+            }),
+          }}
+        />
       </head>
       <body>
         <GoogleAnalytics />
